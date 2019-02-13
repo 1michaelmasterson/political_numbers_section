@@ -86,7 +86,7 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y =lifeExp)) + # we aren't
 
 #how can we save this plot?
 # use ggsave() which will save the last ggplot to a location you provide
-ggsave(here("plots", "first_scatter_plot.pdf"))
+ggsave(here(figures, "first_scatter_plot.pdf"))
 
 
 #Okay but there is something odd about this plot. All of the points are bunched on the left side
@@ -109,7 +109,7 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y =lifeExp)) +
      title = "Wealth and Health Outcomes")
 
 #lets save this
-ggsave(here("plots", "good_scatter_plot.pdf"))
+ggsave(here(figures, "good_scatter_plot.pdf"))
 
 
 
@@ -192,7 +192,7 @@ ggplot(data=gapminder, mapping = aes(x = gdpPercap)) +
 
 
 ##we can save it the same way
-ggsave(here("plots", "histogram.pdf"))
+ggsave(here(figures, "histogram.pdf"))
 
 ################################################
 # Practice 2
