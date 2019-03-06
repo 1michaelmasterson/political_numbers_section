@@ -55,8 +55,8 @@ longley
 #the next argument is the data this comes from
 
 model1.ols <- lm(lifeExp ~ gdpPercap, data = gapminder)
-#call summary on the model object to see the result
-summary(model1.ols)
+#call tidy on the model object to see the result
+tidy(model1.ols)
 
 #use stargazer to put it in a good looking table
 stargazer(model1.ols, type ='text')
@@ -72,7 +72,7 @@ longley <-mutate(longley,
 
 
 model2.ols <- lm(Employed ~ realgnp, data = longley)
-summary(model2.ols)
+tidy(model2.ols)
 stargazer(model2.ols, type ='text')
 #ADD MORE EXAMPLES
 
