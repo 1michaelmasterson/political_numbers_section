@@ -1,12 +1,4 @@
-# lm, significance, residuals; Cleaning WI
-
-#Ask mike what clearning WI content he wants included
-#just show examples of adding or deleting rows in xl
-#could also show what happens when it goes wrong
-
-
-#emphasize the importance of the scale in interpreting the x
-
+# Section 6  lm, significance, residuals;
 
 ##############################
 #library packages
@@ -74,7 +66,7 @@ longley <-mutate(longley,
 model2.ols <- lm(Employed ~ realgnp, data = longley)
 tidy(model2.ols)
 stargazer(model2.ols, type ='text')
-#ADD MORE EXAMPLES
+
 
 
 ##############################
