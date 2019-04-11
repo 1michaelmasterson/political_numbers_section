@@ -1,41 +1,43 @@
+#Section 4 Rscript
+##############################
+#Library packages
+##############################
 library(gapminder)
 
 
 library(tidyverse)
 
 
-#####################################################################
-###################arguments by number vs. argument by name
-####################################################################
+##############################
+#arguments by number vs. argument by name
+##############################
 ?seq
 
 #You can specify arguments by name as we have been doing
 
 #You can do it without names but they have to be in order!
-seq(1,10,1)
+seq(1, 10, 1)
 
 #is different than 
-seq(10,1,1)
+seq(10, 1, 1)
 
 #Whereas this will work
-seq(to =10, from =1 , by =1)
+seq(to = 10, from = 1 , by = 1)
 
 
 
 ##This will work but you should avoid it
 #try to be consistent
-seq(1, by = 1,10)
+seq(1, by = 1, 10)
 
-
-######################################
-###count
-#####################################
-
-#remember unique
+##############################
+#count
+##############################
+#remember distinct
 #will tell you all the
 #values a variable takes
 
-unique(gapminder$continent)
+distinct(gapminder, continent)
 
 count(gapminder, continent)
 
@@ -48,9 +50,9 @@ count(gapminder, country)
 
 
 
-##################################
+##############################
 #select
-###################################
+##############################
 # select selects a particular variable
 
 #if we want to do something with year
@@ -66,7 +68,7 @@ select(gapminder, pop)
 #we can use  select to make a smaller version of our dataframe
 #that only includes country, year and pop
 
-smaller.dataframe<-select(gapminder, country, year, pop)
+smaller.dataframe <- select(gapminder, country, year, pop)
 
 #lets see it
 smaller.dataframe
@@ -75,15 +77,14 @@ smaller.dataframe
 ####You can also specify a variable you want to exclude with -
 #lets make a dataframe without continent
 
-no_continent.data<-select(gapminder, -continent)
+no_continent.data <- select(gapminder, - continent)
 
 #let's see it
 no_continent.data
 
-
-###############################
+##############################
 #arrange
-################################
+##############################
 # arrange puts a dataframe in order
 # from greatest to least
 
@@ -108,9 +109,9 @@ gapminder
 ###Used to transform it
 
 
-###############################
-#Creating a New Variable
-################################
+##############################
+#Mutate
+##############################
 #We can create a new variable with the mutate command
 #and then save the dataset over our data that includes the
 #new variable using <-
@@ -133,14 +134,14 @@ gapminder
 ###what about if I want a log GDP per capita varaible?
 
 gapminder<-mutate(gapminder,
-                  ln_gdpPercap= log(gdpPercap))
+                  ln_gdpPercap = log(gdpPercap))
 
 #lets see it
 gapminder
 
-###############################################
+##############################
 #Practice 1
-##############################################
+##############################
 
 #1: add a new variable to the gapminder dataset that is the
 #log of population. Do not forget to save the new version
@@ -154,9 +155,9 @@ gapminder
 #to lowest and save it in that order
 
 
-###############################################
-#Filter
-##############################################
+##############################
+#filter
+##############################
 #Earlier we used  select to select particular variables (or columns)
 #what if we want to select particular observations (or rows) instead?
 #use filter
@@ -173,7 +174,7 @@ filter(gapminder, year == 2002) # the == is important here. It tells R this is a
 #the variable on the left but take the value on the right
 
 #if we want to save this as a new dataset, we can
-year_2002.data<-filter(gapminder, year == 2002)
+year_2002.data <- filter(gapminder, year == 2002)
 year_2002.data
 
 
@@ -195,10 +196,9 @@ filter(gapminder, year != 2002) # != means not equal
 #With catagorical data
 filter(gapminder, country == "Kuwait")
 
-#########################
+##############################
 #Practice 2
-########################
-
+##############################
 #1. create a new dataframe called healthy.data that
 #includes only observations from gapminder where
 #lifeExp is greater than its median
@@ -207,9 +207,9 @@ filter(gapminder, country == "Kuwait")
 # 2. Find out how many times each continent appears in this dataframe
 
 
-################################################
-#Summarize
-################################################
+##############################
+#summarize
+##############################
 
 #remember how we can use
 #summary(dataframe) to get summary stats for every variable?
@@ -238,9 +238,9 @@ sum.data<-summarise(gapminder,
 sum.data
 
 
-########################################
+##############################
 #group_by
-#######################################
+##############################
 #The summarize command by itself might not be that impressive but
 #combined with group_by we can use it to find out
 #information that we could not otherwise get!
@@ -254,7 +254,7 @@ sum.data
 #first lets make a new dataset that is grouped by
 #continents
 
-continents.data<-group_by(gapminder, continent)
+continents.data <- group_by(gapminder, continent)
 
 #lets look
 continents.data
@@ -266,12 +266,12 @@ summarize(continents.data, mean(gdpPercap))
 
 #we could also save this as a new dataframe
 ##In this case, we should specify the new variable name like we would with mutate
-summary.data<-summarize(continents.data, mean_gdPpercap = mean(gdpPercap))
+summary.data <- summarize(continents.data, mean_gdPpercap = mean(gdpPercap))
 summary.data
-#############################
-#Practice 3
-############################
 
+##############################
+#Practice 3
+##############################
 #1. Make a dataset grouped by country called country.data
 
 

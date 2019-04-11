@@ -132,7 +132,7 @@ data %>%
 #############################
 #Let's redo Practice 3 from last week with pipes
 ############################
-##############################
+
 #1. Make a dataset grouped by country called country.data
 
 
@@ -143,7 +143,6 @@ data %>%
 #3. What country has the lowest mean_lifeExp?
 
 
-#################################
 
 #Remember this was a pain because we needed to keep saving over our data?
 
@@ -243,7 +242,7 @@ ggplot(data = gapminder, mapping = aes(x = ln_gdpPercap, y = lifeExp)) +
 
 #Wow! that looks way better! Lets add the line now.
 ggplot(data = gapminder, mapping = aes(x = ln_gdpPercap, y = lifeExp)) +
-  geom_point()+
+  geom_point() +
   geom_smooth(method = "lm")
 
 #much more reasonable!

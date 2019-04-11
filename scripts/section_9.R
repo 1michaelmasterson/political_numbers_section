@@ -56,7 +56,7 @@ tidy(model1.ols)
 
 
 ########who data example
-##make dummy for Asia
+##make dummy for Americas
 
 who.data <- mutate(who.data,
                    americas = case_when(
@@ -150,13 +150,13 @@ prediction_us <- mutate(gapminder,
                        us = 1)
 
 ##make augmented dataframe
-augment_us <-augment(model2.ols, newdata =prediction_us)
+augment_us <- augment(model2.ols, newdata =prediction_us)
 
 augment_us
 
 ##calc confidence interval
 
-augment_us <-mutate(augment_us,
+augment_us <- mutate(augment_us,
   upperbound = .fitted + (1.96 * .se.fit),
   lowerbound = .fitted - (1.96 * .se.fit)
 )

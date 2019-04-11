@@ -264,11 +264,9 @@ tidy(standard_spending_model)
 # predicted value of y
 model.tidy <- tidy(standard.model, conf.int = TRUE)
 model.tidy
-# model.tidy[-1,]
 
 
 ###makeplot
-# p_conf <-ggplot(df, aes(time, mean))
 ggplot(model.tidy, aes(x = term, y = estimate,  color = term)) +
  #This creates a point with a range around it
   #The point is at y = std_estimate and the range
@@ -302,7 +300,7 @@ ggplot(model.tidy[-1, ], aes(x = term, y = estimate,  color = term)) +
 
 ##Lets do this for our spening model
 
-spend.tidy <-tidy(standard_spending_model, conf.int = TRUE)
+spend.tidy <- tidy(standard_spending_model, conf.int = TRUE)
 
 
 #Notice what is the same and 
@@ -315,7 +313,7 @@ ggplot(spend.tidy[-1, ], aes(x = term, y = estimate,  color = term)) +
                               "Log Health Spending (per capita)")) +
   #add a horizontal line a zero to make it easier
   #to tell if relationships are significant
-  geom_hline(aes(yintercept=0)) +
+  geom_hline(aes(yintercept = 0)) +
   #Lets also remove the legend because we really don't need it
   theme(legend.position = "none")
 

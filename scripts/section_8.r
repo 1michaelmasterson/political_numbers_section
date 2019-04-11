@@ -11,7 +11,7 @@ library(stargazer)
 ##############################
 #load WHO data
 ##############################
-who.data <-read_csv(here("data", "who2009.csv"))
+who.data <- read_csv(here("data", "who2009.csv"))
 
 
 ##############################
@@ -47,7 +47,7 @@ who.data
 #this should be familiar to you now
 
 gapminder <- mutate(gapminder,
-  gdp = pop*gdpPercap
+  gdp = pop * gdpPercap
 )
 
 
@@ -118,16 +118,16 @@ stargazer(model.ols2, type = "text")
 #first make a dataframe prediction dataframe from original data
 #note you MUST include the DV in the prediction data
 #the easiest way is just to copy everything
-prediction.data <-gapminder
+prediction.data <- gapminder
 
 #now set log pop to its mean for every row
-prediction.data <-mutate(prediction.data,
+prediction.data <- mutate(prediction.data,
                          log_pop = mean(log_pop))
 
 
 ###Now we can use augment to predict
 #using our new precition data!
-model2.predict <-augment(model.ols2, newdata = prediction.data)
+model2.predict <- augment(model.ols2, newdata = prediction.data)
 model2.predict
 
 
@@ -155,7 +155,7 @@ labs(x = "Log GDP", y = "Life Expectancy in Years",
 #then make it in billions
 model2.predict <-mutate(model2.predict,
                           gdp = exp(log_gdp),
-                        gdp_billions = gdp/1000000000)
+                        gdp_billions = gdp / 1000000000)
 
 
 
@@ -195,7 +195,7 @@ predict.data.practice
 ggplot(data = model2.predict, aes(x = gdp_billions, y = .fitted)) +
   geom_line(aes(y = .fitted)) +
 geom_point(data = filter(model2.predict, country == "United States"),
-           aes(y =lifeExp)) +
+           aes(y = lifeExp)) +
   labs(x = "GDP (in Billions)", y = "Life Expectancy in Years",
        title = "Health and Wealth") 
 
@@ -267,12 +267,12 @@ model3.predict_us <- mutate(model3.predict_us,
 
 model3.predict_world <-mutate(model3.predict_world,
                         gdp = exp(log_gdp),
-                        gdp_billions = gdp/1000000000)
+                        gdp_billions = gdp / 1000000000)
 
 
 model3.predict_us <-mutate(model3.predict_us,
                               gdp = exp(log_gdp),
-                              gdp_billions = gdp/1000000000)
+                              gdp_billions = gdp / 1000000000)
 
 
 
@@ -288,8 +288,6 @@ ggplot(data = model3.predict_world, aes(x = log_gdp, y = .fitted)) +
 
 
 ggplot(data = model3.predict_world, aes(x = gdp_billions, y = .fitted)) +
-  # geom_point(data = filter(model2.predict, country == "United States"),
-  #            aes(y =lifeExp)) +
   geom_ribbon(aes(ymin = lowerbound, ymax = upperbound), alpha = 0.4, color = "blue") +
   geom_line(color = "blue") +
   geom_line(data = model3.predict_us, aes(y = .fitted), color = "red") +

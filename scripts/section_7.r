@@ -1,4 +1,4 @@
-#Section 7 
+#Section 7 Rscript
 #data cleaning with case_when
 # join
 #Transpose
@@ -19,7 +19,7 @@ library(broom)
 
 #Polity is a dataset that contains regime data at the 
 #country-year unit of analysis
-polity.data <-read_csv(here("data", "p4v2017.csv"))
+polity.data <- read_csv(here("data", "p4v2017.csv"))
 spec(polity.data)
 
 #We care about the variables ccode that indicates which country
@@ -97,7 +97,7 @@ nmc.data %>%
   arrange(milex) 
 
 #fix it the same way with mutate and case_when
-nmc.data <-mutate(nmc.data,
+nmc.data <- mutate(nmc.data,
                   milex = case_when(milex < 0 ~ NA_real_,
                                     TRUE ~ milex))
 
@@ -115,7 +115,7 @@ summary(nmc.data)
 #what if the variable was named differently? 
 #we can rename it like this
 
-polity.data <-rename(polity.data, year = year)
+polity.data <- rename(polity.data, year = year)
 
 #to join them we use the inner_join function
 #inner_join takes as arguements the dataframes you want to join
@@ -123,7 +123,7 @@ polity.data <-rename(polity.data, year = year)
 #you are joining by in text. If there is more than 1,
 #they must be concatenated 
 
-joined.data <-inner_join(polity.data, nmc.data, by = c("ccode", "year"))
+joined.data <- inner_join(polity.data, nmc.data, by = c("ccode", "year"))
 joined.data
 
 #lets see it
@@ -167,17 +167,17 @@ summary(joined.data)
 ##############################
 #1. read in war.csv as a tibble
 
-war.data<-read_csv(here("data", "war.csv"))
+war.data <- read_csv(here("data", "war.csv"))
 war.data
 
 
 
 #2. throw away all the variables except ccode, StartYear1, and WarType
-war.data <-select(war.data, ccode, StartYear1)
+war.data <- select(war.data, ccode, StartYear1)
 
 
 #3. Rename variables as needed
-war.data <-rename(war.data, year = StartYear1)
+war.data <- rename(war.data, year = StartYear1)
 
 # we need a variable that records a war happened
 
@@ -246,7 +246,7 @@ summary(warjoin)
 
 #There are no variable names so set col_names to false
 #Otherwise the state will be treated as the variable
-sideways.data <-read_csv(here("data", "sideways_polls.csv"),
+sideways.data <- read_csv(here("data", "sideways_polls.csv"),
                          col_names = FALSE)
 sideways.data
 

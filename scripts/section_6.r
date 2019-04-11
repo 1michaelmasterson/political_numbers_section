@@ -23,13 +23,13 @@ longley
 #Linear Models
 ##############################
 #remember this:
-#y = mx+b ?
+#y = mx + b ?
 
 #when doing a linear model we think it this way, but the intutition is the same
 
 #y = a + bx + error
 
-#y_hat = a + bx + error
+#y_hat = a + bx
 
 
 
@@ -51,7 +51,7 @@ model1.ols <- lm(lifeExp ~ gdpPercap, data = gapminder)
 tidy(model1.ols)
 
 #use stargazer to put it in a good looking table
-stargazer(model1.ols, type ='text')
+stargazer(model1.ols, type = 'text')
 
 
 #what does it mean?
@@ -65,7 +65,7 @@ longley <-mutate(longley,
 
 model2.ols <- lm(Employed ~ realgnp, data = longley)
 tidy(model2.ols)
-stargazer(model2.ols, type ='text')
+stargazer(model2.ols, type = 'text')
 
 
 

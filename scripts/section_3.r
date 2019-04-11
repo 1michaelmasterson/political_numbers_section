@@ -1,9 +1,12 @@
-###########################what are packages?
+# Section 3 Rscript
+##############################
+#Pacakges
+##############################
+# What are packages?
 #Packages add functionality on to R
 
 
 
-###########################Install packages
 #install packages with the install.packages() command
 ##this command takes the argument of the name of the
 #package you want to install in quotes
@@ -20,7 +23,7 @@ install.packages("gapminder")
 
 
 
-###########################Using packages
+#Using packages
 #Pacakages are not automatically loaded into R to save memory, so
 #Even after installing them we need to tell R we want to use it
 #with:
@@ -34,8 +37,9 @@ library(tidyverse) #we installed this in the first section
 library(gapminder)
 
 
-
-#############Explore R objects
+##############################
+#Explore R objects
+##############################
 
 
 #What variables are in gapminder?
@@ -66,18 +70,19 @@ gapminder$pop[15]
 
 
 # what are all of the countries in our dataframe?
-unique(gapminder$country)
+distinct(gapminder, country)
 
 
-
-###################################################Plots
+##############################
+#Scatter Plots
+##############################
 ###What if we want to make a scatter plot of gdp Percapita and life expectancy?
 
 
 ####use ggplot to make plots
 ##the first arugment is what dataframe we are using
 ##next arguement, mapping, is what variables we are associating with what axis
-ggplot(data = gapminder, mapping = aes(x = gdpPercap, y =lifeExp)) + # we aren't done yet so we need a + here
+ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) + # we aren't done yet so we need a + here
   #The thing we want to do is add points to our plot
   #We already supply data and mapping above, so we can just use the default arguments
   geom_point()
@@ -139,10 +144,9 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
        title = "Wealth and Health Outcomes")
 
 
-
-############################################
-# Practice 1
-###########################################
+##############################
+#Practice 1
+##############################
 #1. make a scatter plot with lifeExp as the y variable and year as the x variable
 
 
@@ -151,28 +155,30 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
 #3. save it to your plots folder using code
 
 
-########################################Histogram
+##############################
+#Histograms
+##############################
 
-ggplot(data=gapminder, mapping = aes(x = gdpPercap)) +
+ggplot(data = gapminder, mapping = aes(x = gdpPercap)) +
   geom_histogram()
 
 
 #lets find better values for the bin widths
 
 #how can we change the number of bins?
-ggplot(data=gapminder, mapping = aes(x = gdpPercap)) +
+ggplot(data = gapminder, mapping = aes(x = gdpPercap)) +
   #bins is an argument specific to histograms so we add it here
   geom_histogram(bins = 15)
 
 
 #what if we want to customize where the breaks are
-ggplot(data=gapminder, mapping = aes(x = gdpPercap)) +
+ggplot(data = gapminder, mapping = aes(x = gdpPercap)) +
   #breaks is also a histogram specific arguement
   geom_histogram(breaks = seq(from = 0, to =114000, by = 10000))
 
 
 #give it good labels
-ggplot(data=gapminder, mapping = aes(x = gdpPercap)) +
+ggplot(data = gapminder, mapping = aes(x = gdpPercap)) +
   #breaks is also a histogram specific arguement
   geom_histogram(breaks = seq(from = 0, to =114000, by = 10000)) +
   labs(title = "Global Wealth", x = "GDP per capita",
@@ -180,9 +186,9 @@ ggplot(data=gapminder, mapping = aes(x = gdpPercap)) +
 
 
 #change range of the graph
-ggplot(data=gapminder, mapping = aes(x = gdpPercap)) +
+ggplot(data = gapminder, mapping = aes(x = gdpPercap)) +
   #breaks is also a histogram specific arguement
-  geom_histogram(breaks = seq(from = 0, to =114000, by = 10000)) +
+  geom_histogram(breaks = seq(from = 0, to = 114000, by = 10000)) +
   ggtitle("Global Wealth") + 
   xlab("GDP per capita") +
   ylab("Number of Countries") +
@@ -194,18 +200,18 @@ ggplot(data=gapminder, mapping = aes(x = gdpPercap)) +
 ##we can save it the same way
 ggsave(here("figures", "histogram.pdf"))
 
-################################################
-# Practice 2
-###############################################
+##############################
+#Practice 2
+##############################
 #1. make a histogram of lifeExp
 
 # 2. Give it a good title as well as x axis and y axis label
 
 # 3.  Save the plot
 
-#####################
-# Classes of R objects
-####################
+##############################
+#Classes of R objects
+##############################
 ##classes of objects
 #class tells you what class its arggument is
 #nomial/catagorical
@@ -236,11 +242,9 @@ class(gapminder)
 #It is a dataframe
 
 
-
-###############################################
-#Practice 3 (move to end)
-###############################################
-
+##############################
+#Practice 3
+##############################
 # 1. What level of measurement is each variable in our dataframe?
 
 # 2. What is the unit/level of analysis of the dataframe?

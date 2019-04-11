@@ -1,8 +1,6 @@
-#r
+#section 2 script R basics
 ########################################
-#
-# Section 02, PS 218, Spring 2019
-#
+# Math and Working Directory
 ########################################
 #First lets use the project menu in the upper right
 #to create an R project
