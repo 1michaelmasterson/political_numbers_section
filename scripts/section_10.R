@@ -190,7 +190,6 @@ stargazer(manual_standard.model, standard.model,
 #You can adjust the other stargazer
 #options as normal
 stargazer(standard.model, type = "text",
-          coef = list(standard.model$standardized.coefficients),
           covariate.labels = c("Health Workers (per 10,000 people)",
                                "Hospital Beds (per 10,000 people)"),
           # change DV label
