@@ -23,10 +23,10 @@ Section 5: read_csv, and pipes
 
 Section 6: Linear models, residuals, and augment
 
-Section 7: case_when, joining dataframes, tranpose, and gather
+Section 7: case_when, joining dataframes, transpose, and gather
 
 Section 8: rename, multivariate linear models and prediction, and log-linear models
 
 Section 9: Interactions and predictions with interactions
 
-Section 10: Stargazer, standardized coefficents, and coefficent plots
+Section 10: Stargazer, standardized coefficients, and coefficient plots
