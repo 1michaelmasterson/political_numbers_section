@@ -1,3 +1,5 @@
+**IMPORTANT NOTE:** This repository is **outdated** and only exists as a reference for former students. I recommend you use the updated version at [https://github.com/1michaelmasterson/political_numbers2020](https://github.com/1michaelmasterson/political_numbers2020).
+
 # political_numbers_section
 Rscripts and data for the Understanding Political Numbers Class
 
